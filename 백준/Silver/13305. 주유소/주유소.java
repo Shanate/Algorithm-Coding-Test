@@ -9,20 +9,20 @@ public class Main {
 		int N = Integer.parseInt(br.readLine()); // 도시의 수
 		
 		int R = N-1; // 도로의 수
-		int[] City = new int[N];
-		int[] Road = new int[R];
+		long[] City = new long[N];
+		long[] Road = new long[R];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
 		for(int i=0; i<R; i++) { // 도로의 거리
-			Road[i] = Integer.parseInt(st.nextToken());
+			Road[i] = Long.parseLong(st.nextToken());
 		}
 		
 		st = new StringTokenizer(br.readLine()," ");
 		for(int i=0; i<N; i++) { // 도시의 기름값
-			City[i] = Integer.parseInt(st.nextToken());
+			City[i] = Long.parseLong(st.nextToken());
 		}
-		int totalCost = 0;
-		int Cost = City[0];
+		long totalCost = 0;
+		long Cost = City[0];
 		
 		for(int i=0; i<R; i++) {
 		if(City[i] < Cost) { // 최저 비용을 비교해 갱신
