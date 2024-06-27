@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+
 public class Main {
     
     static int K; // 트리 레벨
@@ -26,7 +27,6 @@ public class Main {
         K = Integer.parseInt(br.readLine()); // 레벨 K 입력
         int size = (int)Math.pow(2, K) - 1; // 전체 노드 수 계산
         arr = new int[size + 1]; // 1부터 인덱스 사용
-        inOrderAns = new StringBuffer[K]; 
 
         String[] input = br.readLine().split(" "); // 입력 받기
         
@@ -34,13 +34,14 @@ public class Main {
             arr[i] = Integer.parseInt(input[i - 1]); // 입력된 값 할당
         }
         
+        inOrderAns = new StringBuffer[K]; // 결과 저장을 위한 배열 초기화
         for (int i = 0; i < K; i++)
             inOrderAns[i] = new StringBuffer(); // 결과를 저장할 StringBuffer 초기화
 
         tree(1, size, 1); // Start : 1, End : size, Level : 1
 
         for (int i = 0; i < K; i++)
-            bw.write(inOrderAns[i].toString().trim() + "\n");
+            bw.write(inOrderAns[i].toString() + "\n");
         bw.flush();
     }
 }
