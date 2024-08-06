@@ -20,6 +20,7 @@ class Solution {
         if(word.length()> 5) return; // 종료조건.
         dic.add(word);
         for(char vowel : str) {
+                        //for(int i=0; i<str.length; i++)
             dfs(word + vowel);
         }
     }
