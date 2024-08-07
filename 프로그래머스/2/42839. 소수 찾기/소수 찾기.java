@@ -34,6 +34,7 @@ class Solution {
 
         static int solution(String numbers) {
             int answer = 0;
+            set.clear();
             int[] num = new int[numbers.length()];
             visited = new boolean[numbers.length()];
 
