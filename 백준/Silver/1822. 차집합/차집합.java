@@ -17,10 +17,13 @@ public class Main {
             setA.remove(Integer.parseInt(st.nextToken()));
         }
         System.out.println(setA.size());
-        if(!setA.isEmpty()) {
+/*        if(!setA.isEmpty()) {
             setA.stream().forEach(x -> System.out.print(x + " "));
         } else{
             return;
+        }*/
+        for (Integer num : setA) {
+            System.out.print(num + " ");
         }
     }
 }
