@@ -7,7 +7,6 @@ class Solution {
     static int[] dy = {0, 1, 1, 1, 0, -1 ,-1 ,-1};
 
     static int solution(int[] arrows) {
-
         int answer = 0;
 
         map.put(new Node(0, 0), new HashSet<>());
@@ -35,16 +34,11 @@ class Solution {
                 map.get(cur).add(next); //현재 점에서 다음으로 방문할 점 방문 표시
                 map.get(next).add(cur); //
 
-
                 cur = next;
             }
-
         }
-
-
         return answer;
     }
-
     static class Node {
         public int x;
         public int y;
@@ -64,5 +58,4 @@ class Solution {
             return this.x == ((Node) o).x && this.y == ((Node) o).y;
         }
     }
-
 }
