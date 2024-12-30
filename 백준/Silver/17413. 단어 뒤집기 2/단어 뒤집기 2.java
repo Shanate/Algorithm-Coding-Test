@@ -52,7 +52,6 @@ public class Main {
                         sb.append(stack.pop());
                     }
                     sb.append(' ');
-                    continue;
 
                 } else {
                     // 이 경우도 아니라면(괄호 안에 있는 상태도 아니고, 공백을 만나지도 않은 상태) 그냥 스택에 일단 저장한다.
