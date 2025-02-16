@@ -56,11 +56,11 @@ public class Main {
     }
 
     static boolean check(int row, int col, int size) {
-        int color = map[row][col];
+        int num = map[row][col];
 
         for (int i = row; i < row + size; i++) {
             for (int j = col; j < col + size; j++) {
-                if (color != map[i][j]) {
+                if (num != map[i][j]) {
                     return false;
                 }
             }
