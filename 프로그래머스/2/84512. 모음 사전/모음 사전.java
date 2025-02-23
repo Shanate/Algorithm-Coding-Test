@@ -7,9 +7,7 @@ import java.util.*;
 A -> E가 아니라, A -> AA다.
 A -> AA -> AAA -> AAAA -> AAAAA -> AAAAE -> AAAAI -> AAAAO -> AAAAU ->
 AAAE -> AAAI -> AAAO -> AAAU -> AAE ...
-? 멀리 갔다가 다시 돌아오는데
-재귀인가? -> DFS?
-를 고려해봐야할거같다.
+
 */
 
 class Solution {
