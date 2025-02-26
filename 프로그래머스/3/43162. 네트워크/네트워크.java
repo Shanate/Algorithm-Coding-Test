@@ -1,26 +1,25 @@
-import java.util.*;
 class Solution {
-    static void dfs(int cpu, boolean[] v, int[][] computers) {
-        v[cpu] = true;
-
-        for(int i=0; i<computers.length; i++) {
-            if(v[i] == false && computers[cpu][i] == 1){
-                dfs(i, v, computers);
-            }
-        }
-    }
     static int solution(int n, int[][] computers) {
-        int answer = 0; // 카운트
-        boolean[] v = new boolean[computers.length];
+        int answer = 0;
+        boolean[] visited = new boolean[n];
 
-        Arrays.fill(v, false); // 방문 처리 초기화
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
 
-        for(int i=0; i<computers.length; i++) {
-            if(v[i] == false) {
+                dfs(i, visited, computers);
                 answer++;
-                dfs(i, v, computers);
+
             }
         }
         return answer;
     }
+        static void dfs(int node, boolean[] visited, int[][] computers) {
+        visited[node] = true;
+        for (int i = 0; i < computers.length; i++) {
+            if (!visited[i] && computers[node][i] == 1) {
+
+                dfs(i, visited, computers);
+            }
+        }
+        }
 }
