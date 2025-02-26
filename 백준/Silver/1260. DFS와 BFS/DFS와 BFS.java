@@ -1,57 +1,61 @@
+// 복습
+
 import java.io.*;
 import java.util.*;
 
 public class Main {
 
-    static int N, M, V;
-    static int[][] g;
-    static boolean[] v;
+    static int N, M, V; // 정점, 간선, 탐색 시작 번호
+    static int[][] graph;
+    static boolean[] visited;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-
-        N = Integer.parseInt(st.nextToken()); // 정점 개수
-        M = Integer.parseInt(st.nextToken()); // 간선 개수
-        V = Integer.parseInt(st.nextToken()); // 탐색 시작 정점
-        g = new int[N][N]; // 그래프 인접 행렬
-        v = new boolean[N]; // 방문 여부 배열
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
+        V = Integer.parseInt(st.nextToken());
+        graph = new int[N][N];
+        visited = new boolean[N];
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            int from = Integer.parseInt(st.nextToken()) - 1; // 시정점
-            int to = Integer.parseInt(st.nextToken()) - 1; // 종정점
-            g[from][to] = 1; // 양방향 간선이기 때문에
-            g[to][from] = 1; // 동일하게 =1로 설정
+            int from = Integer.parseInt(st.nextToken()) - 1;
+            int to = Integer.parseInt(st.nextToken()) - 1;
+            graph[from][to] = 1;
+            graph[to][from] = 1; // 양방향
         }
-        dfs(V - 1); // 탐색 시작 정점부터 시작하기
+        dfs(V - 1);
         System.out.println();
-        Arrays.fill(v, false);
+        Arrays.fill(visited, false);
         bfs(V - 1);
     }
 
-    static void bfs(int i) {
+    static void bfs(int start) {
         ArrayDeque<Integer> queue = new ArrayDeque<>();
-        v[i] = true;
-        queue.offer(i);
-        while(!queue.isEmpty()) {
-            i=queue.poll();
-            System.out.print((i+1)+" ");
-            for(int j=0;j<N;j++) {
-                if(g[i][j] != 0 && !v[j]) {
-                    v[j] = true;
-                    queue.offer(j);
+        queue.offer(start);
+        visited[start] = true;
+
+        while (!queue.isEmpty()) {
+            start = queue.poll();
+            System.out.print((start + 1) + " ");
+
+            for (int i = 0; i < N; i++) {
+                if (graph[start][i] == 1 && visited[i] == false) {
+                    visited[i] = true;
+                    queue.offer(i);
                 }
             }
         }
     }
 
-    static void dfs(int i) {
-        v[i] = true;
-        System.out.print((i+1)+" ");
-        for(int j=0;j<N;j++) {
-            if(g[i][j] != 0 && !v[j]) {
-                dfs(j);
+    static void dfs(int start) {
+        visited[start] = true;
+        System.out.print((start + 1) + " ");
+
+        for (int i = 0; i < N; i++) {
+            if(graph[start][i] == 1 && visited[i] == false) {
+                dfs(i);
             }
         }
     }
